@@ -2151,10 +2151,10 @@
                         <label for="name">Nama</label>
                         <input type="text" id="name" name="name" placeholder="Masukkan namamu..." required>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="email@contoh.com" required>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="message">Pesan</label>
                         <textarea id="message" name="message" placeholder="Tuliskan pesanmu di sini..."
@@ -2416,8 +2416,8 @@
         /* ========== CONTACT FORM ========== */
         document.getElementById('contact-form').addEventListener('submit', function (e) {
             e.preventDefault();
+
             const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
 
             if (!name) {
@@ -2425,11 +2425,7 @@
                 document.getElementById('name').focus();
                 return;
             }
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                showToast('Masukkan email yang valid!');
-                document.getElementById('email').focus();
-                return;
-            }
+
             if (!message) {
                 showToast('Pesan tidak boleh kosong!');
                 document.getElementById('message').focus();
@@ -2441,7 +2437,18 @@
             btn.disabled = true;
 
             setTimeout(function () {
-                showToast('Pesan berhasil terkirim, Traveler!');
+
+                const subject = encodeURIComponent("Pesan dari Portfolio");
+                const body = encodeURIComponent(
+                    `Nama: ${name}\n\nPesan:\n${message}`
+                );
+
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=wiyan091@gmail.com&su=${subject}&body=${body}`;
+
+                window.open(gmailUrl, "_blank");
+
+                showToast('Membuka Gmail...');
+
                 btn.innerHTML = '<i class="fas fa-check"></i> Terkirim!';
                 btn.style.background = 'linear-gradient(135deg, #388E3C, #66BB6A)';
 
@@ -2451,9 +2458,9 @@
                     btn.disabled = false;
                     e.target.reset();
                 }, 2500);
+
             }, 1500);
         });
-
         /* ========== KEYBOARD ACCESSIBILITY ========== */
         document.addEventListener('keydown', function (e) {
             // Escape tutup menu
