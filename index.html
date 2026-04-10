@@ -1503,11 +1503,11 @@
                 opacity: 0;
                 visibility: hidden;
                 transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                            opacity 0.35s ease,
-                            visibility 0.35s ease;
+                    opacity 0.35s ease,
+                    visibility 0.35s ease;
                 /* Border atas bergaya GI */
                 box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6),
-                            0 0 40px rgba(212, 168, 67, 0.05);
+                    0 0 40px rgba(212, 168, 67, 0.05);
             }
 
             .nav-links.open {
@@ -1555,16 +1555,28 @@
                 animation: navSlideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
             }
 
-            .nav-links.open li:nth-child(1) { animation-delay: 0.05s; }
-            .nav-links.open li:nth-child(2) { animation-delay: 0.1s; }
-            .nav-links.open li:nth-child(3) { animation-delay: 0.15s; }
-            .nav-links.open li:nth-child(4) { animation-delay: 0.2s; }
+            .nav-links.open li:nth-child(1) {
+                animation-delay: 0.05s;
+            }
+
+            .nav-links.open li:nth-child(2) {
+                animation-delay: 0.1s;
+            }
+
+            .nav-links.open li:nth-child(3) {
+                animation-delay: 0.15s;
+            }
+
+            .nav-links.open li:nth-child(4) {
+                animation-delay: 0.2s;
+            }
 
             @keyframes navSlideIn {
                 from {
                     opacity: 0;
                     transform: translateX(-12px);
                 }
+
                 to {
                     opacity: 1;
                     transform: translateX(0);
@@ -1676,6 +1688,18 @@
                 opacity: 1;
                 transform: none;
             }
+        }
+
+        .contact-value {
+            text-decoration: none;
+            /* ❌ hilangkan garis */
+            color: #ccc;
+            transition: 0.3s;
+        }
+
+        .contact-value:hover {
+            color: #D4A847;
+            transform: translateX(3px);
         }
     </style>
     <style>
@@ -2069,31 +2093,47 @@
 
             <div class="contact-wrapper">
                 <div class="contact-info reveal reveal-delay-1">
-                    <div class="contact-item">
-                        <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <p class="contact-label">Email</p>
-                            <p class="contact-value"><a href="mailto:arya@teyvat.dev">wiyan091@gmail.com</a></p>
+                    <div class="contact-info reveal reveal-delay-1">
+
+                        <!-- EMAIL -->
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="contact-label">Email</p>
+                                <a href="https://mail.google.com/mail/?view=cm&to=wiyan091@gmail.com" target="_blank"
+                                    class="contact-value">
+                                    wiyan091@gmail.com
+                                </a>
+                            </div>
                         </div>
+
+                        <!-- LOKASI -->
+                        <div class="contact-item">
+                            <div class="contact-icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="contact-label">Lokasi</p>
+                                <a href="https://www.google.com/maps?q=Grobogan,+Jawa+Tengah,+Indonesia" target="_blank"
+                                    rel="noopener noreferrer" class="contact-value">
+                                    Grobogan, Jawa Tengah, Indonesia
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
-                   <div class="contact-item">
+                    <div class="contact-item">
                         <div class="contact-icon-box">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fab fa-whatsapp"></i>
                         </div>
                         <div>
-                            <p class="contact-label">Lokasi</p>
-                            <a href="https://www.google.com/maps?q=Grobogan,+Jawa+Tengah,+Indonesia" 
-                               target="_blank" 
-                               class="contact-value">
-                                Grobogan, Jawa Tengah, Indonesia
+                            <p class="contact-label">WhatsApp</p>
+                            <a href="https://wa.me/6282220490991" target="_blank" rel="noopener noreferrer"
+                                class="contact-value">
+                                0822-2049-0991
                             </a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon-box"><i class="fas fa-phone"></i></div>
-                        <div>
-                            <p class="contact-label">Telepon</p>
-                            <p class="contact-value"><a href="tel:+6281234567890">082220490991</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -2131,22 +2171,20 @@
     <!-- Footer -->
     <footer>
         <div class="footer-socials">
-          <div class="footer-socials">
-    <a href="https://www.linkedin.com/in/tahir-wiyan-priyambodo-0a18b7314"
-        target="_blank" aria-label="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/tahir-wiyan-priyambodo-0a18b7314" target="_blank"
+                    aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
 
-    <a href="https://www.instagram.com/tahirwiyann"
-        target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
+                <a href="https://www.instagram.com/tahirwiyann" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
 
-    <a href="https://wa.me/6282220490991"
-        target="_blank" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-</div>
+                <a href="https://wa.me/6282220490991" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
         </div>
         <p class="footer-text">
             Crafted with <span class="gold">Vision</span> &middot; 2026 — Tahir Wiyan Priyambodo
