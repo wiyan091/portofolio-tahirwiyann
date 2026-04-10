@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genshin Impact Logo</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* === CSS Variables === */
+        :root {
+            --gold: #D4A847;
+            --gold-light: #F5E6A3;
+            --gold-dark: #9A7B2D;
+            --amber: #E8B84B;
+            --bg-deep: #0A0A12;
+            --bg-mid: #111122;
+            --accent-glow: #F5D76E;
+            --white: #F0EDE4;
+            --silver: #B8B0A0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-deep);
+            overflow: hidden;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* === Latar belakang bertekstur === */
+        .bg-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 50% 50%, rgba(212, 168, 71, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 80% 60% at 30% 70%, rgba(30, 20, 50, 0.8) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 50% at 70% 30%, rgba(20, 15, 40, 0.6) 0%, transparent 60%),
+                var(--bg-deep);
+        }
+
+        /* Pola bintang halus */
+        .stars {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle var(--dur) ease-in-out infinite var(--delay);
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            50% {
+                opacity: var(--max-op);
+                transform: scale(1.2);
+            }
+        }
+
+        /* === Kontainer Logo Utama === */
+        .logo-container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            cursor: default;
+            animation: logoEntry 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes logoEntry {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+                filter: blur(8px);
+            }
+
+            60% {
+                filter: blur(0);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        /* === Simbol Vision (SVG) === */
+        .vision-wrap {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin-bottom: -12px;
+            z-index: 20;
+        }
+
+        .vision-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(212, 168, 71, 0.5)) drop-shadow(0 0 60px rgba(212, 168, 71, 0.2));
+            animation: visionFloat 4s ease-in-out infinite, visionSpin 30s linear infinite;
+        }
+
+        @keyframes visionFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @keyframes visionSpin {
+            from {
+                rotate: 0deg;
+            }
+
+            to {
+                rotate: 360deg;
+            }
+        }
+
+        /* Lingkaran cahaya di belakang vision */
+        .vision-glow {
+            position: absolute;
+            inset: -30px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 215, 110, 0.15) 0%, transparent 70%);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        /* === Nama Utama === */
+        .logo-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900;
+            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: transparent;
+            background: linear-gradient(180deg,
+                    var(--gold-light) 0%,
+                    var(--gold) 30%,
+                    var(--amber) 55%,
+                    var(--gold-dark) 80%,
+                    #7A6020 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            position: relative;
+            line-height: 1.1;
+            text-align: center;
+            filter: drop-shadow(0 2px 8px rgba(212, 168, 71, 0.4));
+        }
+
+        /* Garis emas di bawah judul */
+        .logo-divider {
+            width: clamp(200px, 50vw, 420px);
+            height: 2px;
+            position: relative;
+            margin: 6px 0 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+            opacity: 0.7;
+        }
+
+        .logo-divider::before,
+        .logo-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 8px;
+            height: 8px;
+            border: 1.5px solid var(--gold);
+            background: var(--bg-deep);
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .logo-divider::before {
+            left: -4px;
+        }
+
+        .logo-divider::after {
+            right: -4px;
+        }
+
+        /* === Subtitle === */
+        .logo-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(0.75rem, 2vw, 1.05rem);
+            letter-spacing: 0.55em;
+            text-transform: uppercase;
+            color: var(--silver);
+            text-align: center;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        /* === Dekorasi Sayap / Ornamen Samping === */
+        .ornament-left,
+        .ornament-right {
+            position: absolute;
+            top: 50%;
+            width: clamp(60px, 12vw, 140px);
+            height: 120px;
+            transform: translateY(-50%);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .ornament-left {
+            left: clamp(-80px, -14vw, -160px);
+        }
+
+        .ornament-right {
+            right: clamp(-80px, -14vw, -160px);
+            transform: translateY(-50%) scaleX(-1);
+        }
+
+        .ornament-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* === Partikel mengambang === */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--gold-light), transparent 70%);
+            opacity: 0;
+            animation: particleRise var(--dur) ease-in-out infinite var(--delay);
+        }
+
+        @keyframes particleRise {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.3);
+            }
+
+            20% {
+                opacity: var(--max-op);
+            }
+
+            80% {
+                opacity: var(--max-op);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-120px) scale(0.8);
+            }
+        }
+
+        /* === Hover efek === */
+        .logo-container:hover .vision-svg {
+            filter: drop-shadow(0 0 30px rgba(245, 215, 110, 0.7)) drop-shadow(0 0 80px rgba(212, 168, 71, 0.35));
+            transition: filter 0.5s ease;
+        }
+
+        .logo-container:hover .logo-title {
+            filter: drop-shadow(0 2px 16px rgba(212, 168, 71, 0.7));
+            transition: filter 0.5s ease;
+        }
+
+        .logo-container:hover .vision-glow {
+            background: radial-gradient(circle, rgba(245, 215, 110, 0.25) 0%, transparent 70%);
+        }
+
+        /* === Ukuran Variasi === */
+        .variants {
+            position: fixed;
+            bottom: 24px;
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+        }
+
+        .variant-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            color: var(--silver);
+            opacity: 0.5;
+            letter-spacing: 0.2em;
+        }
+
+        /* === Versi kecil untuk preview === */
+        .logo-small {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .logo-small:hover {
+            opacity: 1;
+        }
+
+        .logo-small .sm-vision {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 0 6px rgba(212, 168, 71, 0.5));
+        }
+
+        .logo-small .sm-text {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Versi navbar (kanan atas) */
+        .logo-nav {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border: 1px solid rgba(212, 168, 71, 0.2);
+            border-radius: 6px;
+            background: rgba(10, 10, 18, 0.7);
+            backdrop-filter: blur(10px);
+            opacity: 0.6;
+            transition: opacity 0.3s, border-color 0.3s;
+        }
+
+        .logo-nav:hover {
+            opacity: 1;
+            border-color: rgba(212, 168, 71, 0.5);
+        }
+
+        .logo-nav .nav-vision {
+            width: 22px;
+            height: 22px;
+            filter: drop-shadow(0 0 4px rgba(212, 168, 71, 0.5));
+        }
+
+        .logo-nav .nav-text {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            background: linear-gradient(180deg, var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* === Ikon versi hanya simbol === */
+        .logo-icon-only {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 20;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(212, 168, 71, 0.25);
+            background: rgba(10, 10, 18, 0.7);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.6;
+            transition: opacity 0.3s, border-color 0.3s, transform 0.3s;
+        }
+
+        .logo-icon-only:hover {
+            opacity: 1;
+            border-color: rgba(212, 168, 71, 0.6);
+            transform: scale(1.1);
+        }
+
+        .logo-icon-only .icon-vision {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(0 0 6px rgba(212, 168, 71, 0.5));
+        }
+
+        /* Responsif */
+        @media (max-width: 640px) {
+
+            .ornament-left,
+            .ornament-right {
+                display: none;
+            }
+
+            .logo-small {
+                display: none;
+            }
+
+            .logo-nav {
+                top: auto;
+                bottom: 80px;
+                right: 24px;
+            }
+
+            .logo-icon-only {
+                bottom: 80px;
+                right: 90px;
+            }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Latar belakang -->
+    <div class="bg-layer"></div>
+    <div class="stars" id="stars"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Logo versi kecil (kiri atas) -->
+    <div class="logo-small" aria-label="Logo kecil">
+        <svg class="sm-vision" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" stroke="url(#smGrad)" stroke-width="2.5" />
+            <circle cx="50" cy="50" r="34" stroke="url(#smGrad)" stroke-width="1.5" />
+            <path d="M50 16 L56 42 L82 50 L56 58 L50 84 L44 58 L18 50 L44 42 Z" fill="url(#smGrad)" opacity="0.9" />
+            <circle cx="50" cy="50" r="8" fill="url(#smGrad)" />
+            <defs>
+                <linearGradient id="smGrad" x1="0" y1="0" x2="100" y2="100">
+                    <stop offset="0%" stop-color="#F5E6A3" />
+                    <stop offset="50%" stop-color="#D4A847" />
+                    <stop offset="100%" stop-color="#9A7B2D" />
+                </linearGradient>
+            </defs>
+        </svg>
+        <span class="sm-text">TEYVAT</span>
+    </div>
+
+    <!-- Logo versi navbar (kanan atas) -->
+    <div class="logo-nav" aria-label="Logo navbar">
+        <svg class="nav-vision" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="46" stroke="url(#navGrad)" stroke-width="3" />
+            <circle cx="50" cy="50" r="34" stroke="url(#navGrad)" stroke-width="1.5" />
+            <path d="M50 16 L56 42 L82 50 L56 58 L50 84 L44 58 L18 50 L44 42 Z" fill="url(#navGrad)" opacity="0.9" />
+            <circle cx="50" cy="50" r="8" fill="url(#navGrad)" />
+            <defs>
+                <linearGradient id="navGrad" x1="0" y1="0" x2="100" y2="100">
+                    <stop offset="0%" stop-color="#F5E6A3" />
+                    <stop offset="50%" stop-color="#D4A847" />
+                    <stop offset="100%" stop-color="#9A7B2D" />
+                </linearGradient>
+            </defs>
+        </svg>
+        <span class="nav-text">TEYVAT HUB</span>
+    </div>
+
+    <!-- Logo Ikon Saja (kanan bawah) -->
+    <div class="logo-icon-only" aria-label="Logo ikon">
+        <svg class="icon-vision" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="46" stroke="url(#icGrad)" stroke-width="2.5" />
+            <circle cx="50" cy="50" r="34" stroke="url(#icGrad)" stroke-width="1.5" />
+            <path d="M50 16 L56 42 L82 50 L56 58 L50 84 L44 58 L18 50 L44 42 Z" fill="url(#icGrad)" opacity="0.9" />
+            <circle cx="50" cy="50" r="8" fill="url(#icGrad)" />
+            <defs>
+                <linearGradient id="icGrad" x1="0" y1="0" x2="100" y2="100">
+                    <stop offset="0%" stop-color="#F5E6A3" />
+                    <stop offset="50%" stop-color="#D4A847" />
+                    <stop offset="100%" stop-color="#9A7B2D" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- === LOGO UTAMA === -->
+    <main class="logo-container" role="img" aria-label="Logo utama Teyvat Hub">
+
+        <!-- Ornamen kiri -->
+        <div class="ornament-left">
+            <svg class="ornament-svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M160 80 C140 80 130 40 100 30 C80 24 60 60 30 50 C10 42 0 80 0 80" stroke="url(#ornL)"
+                    stroke-width="1.2" fill="none" opacity="0.6" />
+                <path d="M160 90 C130 90 120 70 90 65 C65 60 50 90 20 85" stroke="url(#ornL)" stroke-width="0.8"
+                    fill="none" opacity="0.4" />
+                <circle cx="100" cy="30" r="3" fill="#D4A847" opacity="0.5" />
+                <circle cx="30" cy="50" r="2.5" fill="#D4A847" opacity="0.4" />
+                <defs>
+                    <linearGradient id="ornL" x1="160" y1="80" x2="0" y2="80">
+                        <stop offset="0%" stop-color="#D4A847" stop-opacity="0" />
+                        <stop offset="40%" stop-color="#D4A847" stop-opacity="1" />
+                        <stop offset="100%" stop-color="#9A7B2D" stop-opacity="0.3" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Ornamen kanan -->
+        <div class="ornament-right">
+            <svg class="ornament-svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M160 80 C140 80 130 40 100 30 C80 24 60 60 30 50 C10 42 0 80 0 80" stroke="url(#ornR)"
+                    stroke-width="1.2" fill="none" opacity="0.6" />
+                <path d="M160 90 C130 90 120 70 90 65 C65 60 50 90 20 85" stroke="url(#ornR)" stroke-width="0.8"
+                    fill="none" opacity="0.4" />
+                <circle cx="100" cy="30" r="3" fill="#D4A847" opacity="0.5" />
+                <circle cx="30" cy="50" r="2.5" fill="#D4A847" opacity="0.4" />
+                <defs>
+                    <linearGradient id="ornR" x1="160" y1="80" x2="0" y2="80">
+                        <stop offset="0%" stop-color="#D4A847" stop-opacity="0" />
+                        <stop offset="40%" stop-color="#D4A847" stop-opacity="1" />
+                        <stop offset="100%" stop-color="#9A7B2D" stop-opacity="0.3" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Simbol Vision -->
+        <div class="vision-wrap">
+            <div class="vision-glow"></div>
+            <svg class="vision-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Ring luar dengan dekorasi -->
+                <circle cx="100" cy="100" r="94" stroke="url(#visionGrad1)" stroke-width="1.5" opacity="0.5" />
+                <circle cx="100" cy="100" r="88" stroke="url(#visionGrad1)" stroke-width="2.5" />
+
+                <!-- Titik-titik di ring luar -->
+                <circle cx="100" cy="6" r="3" fill="#F5E6A3" opacity="0.8" />
+                <circle cx="100" cy="194" r="3" fill="#F5E6A3" opacity="0.8" />
+                <circle cx="6" cy="100" r="3" fill="#F5E6A3" opacity="0.8" />
+                <circle cx="194" cy="100" r="3" fill="#F5E6A3" opacity="0.8" />
+
+                <!-- Titik diagonal -->
+                <circle cx="34" cy="34" r="2" fill="#D4A847" opacity="0.5" />
+                <circle cx="166" cy="34" r="2" fill="#D4A847" opacity="0.5" />
+                <circle cx="34" cy="166" r="2" fill="#D4A847" opacity="0.5" />
+                <circle cx="166" cy="166" r="2" fill="#D4A847" opacity="0.5" />
+
+                <!-- Ring dalam -->
+                <circle cx="100" cy="100" r="72" stroke="url(#visionGrad1)" stroke-width="1.5" opacity="0.6" />
+
+                <!-- Bentuk bintang Vision (8 titik) -->
+                <path d="
+          M100 28
+          L108 70
+          L150 50
+          L120 82
+          L172 100
+          L120 118
+          L150 150
+          L108 130
+          L100 172
+          L92 130
+          L50 150
+          L80 118
+          L28 100
+          L80 82
+          L50 50
+          L92 70
+          Z
+        " fill="url(#visionGrad2)" opacity="0.85" />
+
+                <!-- Bintang dalam lebih kecil (berputar) -->
+                <path d="
+          M100 48
+          L105 80
+          L132 68
+          L110 95
+          L148 100
+          L110 105
+          L132 132
+          L105 120
+          L100 152
+          L95 120
+          L68 132
+          L90 105
+          L52 100
+          L90 95
+          L68 68
+          L95 80
+          Z
+        " fill="url(#visionGrad1)" opacity="0.35" />
+
+                <!-- Inti tengah -->
+                <circle cx="100" cy="100" r="18" fill="url(#visionGrad3)" opacity="0.95" />
+                <circle cx="100" cy="100" r="10" fill="#F5E6A3" opacity="0.7" />
+                <circle cx="100" cy="100" r="4" fill="#FFF8E1" />
+
+                <!-- Garis radial halus -->
+                <line x1="100" y1="12" x2="100" y2="28" stroke="#F5E6A3" stroke-width="0.5" opacity="0.4" />
+                <line x1="100" y1="172" x2="100" y2="188" stroke="#F5E6A3" stroke-width="0.5" opacity="0.4" />
+                <line x1="12" y1="100" x2="28" y2="100" stroke="#F5E6A3" stroke-width="0.5" opacity="0.4" />
+                <line x1="172" y1="100" x2="188" y2="100" stroke="#F5E6A3" stroke-width="0.5" opacity="0.4" />
+
+                <defs>
+                    <linearGradient id="visionGrad1" x1="0" y1="0" x2="200" y2="200">
+                        <stop offset="0%" stop-color="#F5E6A3" />
+                        <stop offset="50%" stop-color="#D4A847" />
+                        <stop offset="100%" stop-color="#9A7B2D" />
+                    </linearGradient>
+                    <radialGradient id="visionGrad2" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#F5E6A3" stop-opacity="0.9" />
+                        <stop offset="60%" stop-color="#D4A847" stop-opacity="0.7" />
+                        <stop offset="100%" stop-color="#9A7B2D" stop-opacity="0.4" />
+                    </radialGradient>
+                    <radialGradient id="visionGrad3" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#FFF8E1" />
+                        <stop offset="50%" stop-color="#F5D76E" />
+                        <stop offset="100%" stop-color="#D4A847" />
+                    </radialGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Judul -->
+        <h1 class="logo-title">Teyvat Hub</h1>
+
+        <!-- Garis pembatas -->
+        <div class="logo-divider"></div>
+
+        <!-- Subtitle -->
+        <p class="logo-subtitle">Jelajahi Dunia Teyvat</p>
+    </main>
+
+    <!-- Label variasi -->
+    <div class="variants">
+        <span class="variant-label">Hover untuk efek cahaya</span>
+    </div>
+
+    <script>
+        // === Membuat bintang latar ===
+        const starsContainer = document.getElementById('stars');
+        const starCount = 80;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--dur', (2 + Math.random() * 4) + 's');
+            star.style.setProperty('--delay', (Math.random() * 5) + 's');
+            star.style.setProperty('--max-op', (0.2 + Math.random() * 0.6).toString());
+
+            // Beberapa bintang lebih besar
+            if (Math.random() > 0.9) {
+                star.style.width = '3px';
+                star.style.height = '3px';
+            }
+
+            starsContainer.appendChild(star);
+        }
+
+        // === Membuat partikel emas mengambang ===
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 25;
+
+        for (let i = 0; i < particleCount; i++) {
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            p.style.left = (20 + Math.random() * 60) + '%';
+            p.style.top = (40 + Math.random() * 40) + '%';
+            p.style.setProperty('--size', (2 + Math.random() * 4) + 'px');
+            p.style.setProperty('--dur', (3 + Math.random() * 5) + 's');
+            p.style.setProperty('--delay', (Math.random() * 6) + 's');
+            p.style.setProperty('--max-op', (0.15 + Math.random() * 0.35).toString());
+            particlesContainer.appendChild(p);
+        }
+
+        // === Efek mouse parallax halus pada logo utama ===
+        const logoContainer = document.querySelector('.logo-container');
+        document.addEventListener('mousemove', (e) => {
+            const cx = window.innerWidth / 2;
+            const cy = window.innerHeight / 2;
+            const dx = (e.clientX - cx) / cx; // -1 sampai 1
+            const dy = (e.clientY - cy) / cy;
+
+            // Gerakan sangat halus
+            logoContainer.style.transform = `translate(${dx * 6}px, ${dy * 4}px)`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            logoContainer.style.transform = 'translate(0, 0)';
+            logoContainer.style.transition = 'transform 0.6s ease';
+            setTimeout(() => { logoContainer.style.transition = ''; }, 600);
+        });
+    </script>
+</body>
+
+</html>
